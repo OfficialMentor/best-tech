@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Tech by Robert Ndemo Orandi</title>
+  <meta name="description" content="Best Tech insights, reviews, and news by Robert Ndemo Orandi." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #111827;
+      --border: #1f2937;
+      --danger: #ef4444;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.6);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.92),
+        rgba(2, 6, 23, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: conic-gradient(
+        from 210deg,
+        #4f46e5,
+        #22c55e,
+        #06b6d4,
+        #f97316,
+        #4f46e5
+      );
+      padding: 2px;
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4),
+        0 12px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    .brand-logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: radial-gradient(circle at 20% 0, #1f2937 0, #020617 55%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: #e5e7eb;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+      transition: color var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(55, 65, 81, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(191, 219, 254, 0.3);
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.55);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .nav-cta span {
+      font-size: 1.1rem;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px) translateX(0);
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.7);
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+
+    .nav-toggle {
+      display: none;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 2.5rem;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.6rem 0.25rem 0.25rem;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      width: fit-content;
+    }
+
+    .hero-pill-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22c55e 0, #16a34a 40%, #052e16 100%);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5),
+        0 0 18px rgba(34, 197, 94, 0.8);
+    }
+
+    .hero-pill-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #4f46e5, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 32rem;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(191, 219, 254, 0.35);
+      background: radial-gradient(circle at 0 0, #4f46e5, #1d4ed8);
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.7);
+      cursor: pointer;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 55px rgba(37, 99, 235, 0.85);
+      background: radial-gradient(circle at 0 0, #6366f1, #2563eb);
+    }
+
+    .btn-ghost {
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(17, 24, 39, 0.95);
+      border-color: rgba(75, 85, 99, 0.95);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 0.75rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5);
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 26px;
+      padding: 1.4rem;
+      background: radial-gradient(circle at 0 0, #111827 0, #020617 60%);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-card-glow {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.35), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.3), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(56, 189, 248, 0.3), transparent 55%);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.1rem;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .hero-card-badge {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      font-size: 0.7rem;
+      color: #bbf7d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-card-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.6);
+    }
+
+    .hero-card-main {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .hero-card-main h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .hero-card-main p {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-card-tag {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .hero-card-footer strong {
+      color: #e5e7eb;
+    }
+
+    .hero-card-metrics {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .hero-card-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      align-items: flex-end;
+    }
+
+    .hero-card-metric span {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .hero-card-metric strong {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .hero-card-side {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .hero-mini {
+      border-radius: 18px;
+      padding: 0.7rem 0.8rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 0.75rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .hero-mini strong {
+      color: #e5e7eb;
+    }
+
+    .hero-mini-pill {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.6);
+      color: #bfdbfe;
+      font-size: 0.7rem;
+    }
+
+    .hero-mini-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .hero-mini-row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-mini-row-label {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-mini-row-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #4f46e5;
+    }
+
+    .hero-mini-row-value {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-card-orbit {
+      position: absolute;
+      inset: -40px;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .hero-orbit-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.7),
+        0 0 18px rgba(56, 189, 248, 0.9);
+    }
+
+    .hero-orbit-dot:nth-child(1) {
+      top: 12%;
+      left: 8%;
+    }
+
+    .hero-orbit-dot:nth-child(2) {
+      top: 18%;
+      right: 10%;
+      background: #a855f7;
+      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.7),
+        0 0 18px rgba(168, 85, 247, 0.9);
+    }
+
+    .hero-orbit-dot:nth-child(3) {
+      bottom: 10%;
+      left: 18%;
+      background: #22c55e;
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.7),
+        0 0 18px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 3.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .section-sub {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .section-link {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      transition: background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+    }
+
+    .section-link:hover {
+      background: rgba(17, 24, 39, 0.95);
+      border-color: rgba(75, 85, 99, 0.95);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    /* Articles grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, #020617 0, #020617 55%, #000 100%);
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 1rem;
+      box-shadow: var(--shadow-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      transition: transform var(--transition-med),
+        box-shadow var(--transition-med),
+        border-color var(--transition-med),
+        background var(--transition-med);
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 55px rgba(15, 23, 42, 0.95);
+      border-color: rgba(55, 65, 81, 0.95);
+      background: radial-gradient(circle at 0 0, #020617 0, #020617 45%, #020617 100%);
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      color: #9ca3af;
+      width: fit-content;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-body {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 0.4rem;
+    }
+
+    .card-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-footer strong {
+      color: #e5e7eb;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      border-radius: 24px;
+      padding: 1.4rem 1.5rem;
+      background: radial-gradient(circle at 0 0, #111827 0, #020617 60%);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .newsletter h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .newsletter p {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      max-width: 26rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .newsletter-input-wrap {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 0.2rem 0.25rem;
+    }
+
+    .newsletter-input-wrap input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.8rem;
+    }
+
+    .newsletter-input-wrap input::placeholder {
+      color: #6b7280;
+    }
+
+    .newsletter-btn {
+      border: none;
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.7);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .newsletter-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.85);
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+
+    .newsletter-note {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    /* Contact */
+    .contact {
+      border-radius: 24px;
+      padding: 1.4rem 1.5rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .contact h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact p {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      max-width: 26rem;
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    .contact-meta span strong {
+      color: #e5e7eb;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    .field label {
+      color: #9ca3af;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 0.55rem 0.7rem;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+      resize: vertical;
+      min-height: 40px;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(79, 70, 229, 0.9);
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.7);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .contact-btn {
+      align-self: flex-start;
+      border: none;
+      padding: 0.6rem 1.3rem;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.7);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.85);
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+    }
+
+    .contact-note {
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #6b7280;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-card-inner {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .newsletter,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding-bottom: 0.4rem;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 0.75rem;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 1.8rem;
+      }
+
+      .hero-card-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .newsletter,
+      .contact {
+        padding: 1.1rem 1.1rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <div class="brand">
+            <div class="brand-logo">
+              <div class="brand-logo-inner">BT</div>
+            </div>
+            <div class="brand-text">
+              <div class="brand-title">Best Tech</div>
+              <div class="brand-sub">by Robert Ndemo Orandi</div>
+            </div>
+          </div>
+
+          <button class="nav-toggle" aria-label="Toggle navigation" onclick="toggleNav()">
+            ☰
+          </button>
+
+          <div class="nav-links" id="navLinks">
+            <a href="#latest">Latest</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#contact">Contact</a>
+            <a href="#contact" class="nav-cta">
+              <span>●</span>
+              Let’s collaborate
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-main">
+          <div class="hero-pill">
+            <div class="hero-pill-dot"></div>
+            <span class="hero-pill-label">Live now</span>
+            <span>Curated tech insights by Robert Ndemo Orandi</span>
+          </div>
+
+          <h1 class="hero-title">
+            The <span>Best Tech</span> stories, reviews & ideas—without the noise.
+          </h1>
+
+          <p class="hero-sub">
+            I’m <strong>Robert Ndemo Orandi</strong>, exploring the tools, products and ideas shaping the future of
+            technology—so you can stay ahead without spending hours online.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="scrollToSection('latest')">
+              Explore latest insights
+              <span>↗</span>
+            </button>
+            <button class="btn-ghost" onclick="scrollToSection('newsletter')">
+              Join the insider list
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot"></div>
+              <span>Curated, honest, and human-first tech coverage</span>
+            </div>
+            <div class="hero-meta-item">
+              <div class="hero-meta-dot"></div>
+              <span>Perfect for founders, builders, and curious minds</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-glow"></div>
+            <div class="hero-card-inner">
+              <div>
+                <div class="hero-card-header">
+                  <div class="hero-card-title">Signal over noise</div>
+                  <div class="hero-card-badge">
+                    <span class="hero-card-badge-dot"></span>
+                    Real-world perspective
+                  </div>
+                </div>
+                <div class="hero-card-main">
+                  <h2>Weekly deep dives on what actually matters in tech.</h2>
+                  <p>
+                    From AI breakthroughs to hardware drops and developer tools—filtered through a practical lens.
+                  </p>
+                  <div class="hero-card-tags">
+                    <span class="hero-card-tag">AI & Productivity</span>
+                    <span class="hero-card-tag">Dev Tools</span>
+                    <span class="hero-card-tag">Startups</span>
+                  </div>
+                  <div class="hero-card-footer">
+                    <span>Updated by <strong>Robert</strong> in real time</span>
+                    <div class="hero-card-metrics">
+                      <div class="hero-card-metric">
+                        <span>Reading time</span>
+                        <strong>4–7 min</strong>
+                      </div>
+                      <div class="hero-card-metric">
+                        <span>Noise removed</span>
+                        <strong>98%</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-card-side">
+                <div class="hero-mini">
+                  <div>
+                    <div style="font-size:0.75rem;color:#9ca3af;">This week’s highlight</div>
+                    <div style="font-size:0.9rem;color:#e5e7eb;font-weight:600;">
+                      The tools that actually make you faster
+                    </div>
+                  </div>
+                  <div class="hero-mini-pill">Curated stack</div>
+                </div>
+
+                <div class="hero-mini hero-mini-row">
+                  <div class="hero-mini-row-item">
+                    <div class="hero-mini-row-label">
+                      <div class="hero-mini-row-dot"></div>
+                      <span>AI that saves real time</span>
+                    </div>
+                    <div class="hero-mini-row-value">+3 hrs / week</div>
+                  </div>
+                  <div class="hero-mini-row-item">
+                    <div class="hero-mini-row-label">
+                      <div class="hero-mini-row-dot" style="background:#22c55e;"></div>
+                      <span>Tools worth paying for</span>
+                    </div>
+                    <div class="hero-mini-row-value">Shortlist</div>
+                  </div>
+                </div>
+
+                <div class="hero-mini">
+                  <div>
+                    <div style="font-size:0.75rem;color:#9ca3af;">For founders & builders</div>
+                    <div style="font-size:0.85rem;color:#e5e7eb;">
+                      Practical takes on shipping, scaling, and staying sane in tech.
+                    </div>
+                  </div>
+                  <div style="font-size:0.75rem;color:#9ca3af;">No fluff.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-card-orbit">
+              <div class="hero-orbit-dot"></div>
+              <div class="hero-orbit-dot"></div>
+              <div class="hero-orbit-dot"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Latest articles -->
+      <section id="latest">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Latest</div>
+            <div class="section-title">Fresh from Best Tech</div>
+            <div class="section-sub">
+              Short, sharp breakdowns of what’s happening in tech—through Robert’s lens.
+            </div>
+          </div>
+          <a href="#newsletter" class="section-link">
+            Get new posts by email
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-tag">AI & Workflow</div>
+            <h3 class="card-title">
+              7 AI tools that actually make your day lighter (not more chaotic)
+            </h3>
+            <p class="card-body">
+              Everyone says “AI will save you time”—but most tools add more tabs and more noise. Here’s a curated stack
+              that genuinely reduces friction in your day.
+            </p>
+            <div class="card-footer">
+              <span>⏱ <strong>5 min</strong> read</span>
+              <span>Focus: <strong>Productivity</strong></span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">Hardware</div>
+            <h3 class="card-title">
+              The one device upgrade that changes everything for remote work
+            </h3>
+            <p class="card-body">
+              It’s not your laptop, not your phone, and not another monitor. A simple hardware shift that quietly
+              transforms how you think, focus, and ship.
+            </p>
+            <div class="card-footer">
+              <span>⏱ <strong>4 min</strong> read</span>
+              <span>Focus: <strong>Deep work</strong></span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">Founders</div>
+            <h3 class="card-title">
+              Building in public without burning out: a realistic approach
+            </h3>
+            <p class="card-body">
+              “Share everything” is bad advice. Here’s a more sustainable way to build in public while protecting your
+              focus, energy, and sanity.
+            </p>
+            <div class="card-footer">
+              <span>⏱ <strong>6 min</strong> read</span>
+              <span>Focus: <strong>Strategy</strong></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Reviews -->
+      <section id="reviews">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-kicker">Reviews</div>
+            <div class="section-title">Honest, practical tech reviews</div>
+            <div class="section-sub">
+              No affiliate hype. Just what’s worth your time, money, and attention.
+            </div>
+          </div>
+          <a href="#contact" class="section-link">
+            Pitch a product
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-tag">Apps</div>
+            <h3 class="card-title">
+              The note-taking app I actually stuck with for more than 90 days
+            </h3>
+            <p class="card-body">
+              I’ve tried them all. This one finally balanced speed, structure, and search—without turning into a second
+              job.
+            </p>
+            <div class="card-footer">
+              <span>Verdict: <strong>Highly recommended</strong></span>
+              <span>Use case: <strong>Builders</strong></span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">Developer tools</div>
+            <h3 class="card-title">
+              A modern dev stack that doesn’t feel like a full-time ops role
+            </h3>
+            <p class="card-body">
+              A lean, opinionated setup that lets you ship fast, stay flexible, and avoid tool fatigue.
+            </p>
+            <div class="card-footer">
+              <span>Verdict: <strong>Worth the switch</strong></span>
+              <span>Focus: <strong>Speed</strong></span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">Ecosystem</div>
+            <h3 class="card-title">
+              Should you go all-in on one ecosystem in 2026?
+            </h3>
+            <p class="card-body">
+              The real trade-offs of locking into a single ecosystem—and when it actually makes sense to do it.
+            </p>
+            <div class="card-footer">
+              <span>Verdict: <strong>It depends</strong></span>
+              <span>Focus: <strong>Long-term</strong></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section id="newsletter">
+        <div class="newsletter">
+          <div>
+            <h3>Get Best Tech in your inbox</h3>
+            <p>
+              One concise email when something truly worth your attention happens in tech. No spam, no daily noise,
+              just signal.
+            </p>
+          </div>
+          <form action="https://formspree.io/f/mbdpearb" method="POST" class="newsletter-form">
+  <div class="newsletter-input-wrap">
+    <input
+      type="email"
+      id="newsletterEmail"
+      name="email"
+      placeholder="Enter your best email"
+      required
+    />
+    <button class="newsletter-btn" type="submit">
+      Join the list
+    </button>
+  </div>
+
+  <div class="newsletter-note">
+    You’ll hear directly from <strong>Robert Ndemo Orandi</strong> when there’s something worth sharing.
+  </div>
+</form>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="contact">
+          <div>
+            <h3>Collaborate with Robert</h3>
+            <p>
+              Have a product, idea, or story that belongs on Best Tech? Reach out for reviews, collaborations, or
+              thoughtful coverage.
+            </p>
+            <div class="contact-meta">
+              <span><strong>Ideal fit:</strong> Tools, products, and ideas that genuinely help people build, learn, or ship.</span>
+              <span><strong>Location:</strong> Global, remote-friendly.</span>
+            </div>
+          </div>
+        <form action="https://formspree.io/f/mbdpearb" method="POST" class="contact-form">
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Your name or company" required />
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="you@example.com" required />
+  </div>
+
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="3"
+      placeholder="Tell Robert what you’d like to collaborate on..."
+      required
+    ></textarea>
+  </div>
+
+  <button class="contact-btn" type="submit">
+    Send message
+  </button>
+
+  <div class="contact-note">
+    Your message will be delivered directly to Robert.
+  </div>
+</form>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-inner">
+          <div>
+            © <span id="year"></span> Best Tech by <strong>Robert Ndemo Orandi</strong>. All rights reserved.
+          </div>
+          <div class="footer-links">
+            <a href="#latest">Latest</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#newsletter">Newsletter</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function toggleNav() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const email = document.getElementById("newsletterEmail").value;
+      alert("Thanks for subscribing, " + email + "! Connect this form to your email service to store subscribers.");
+    }
+
+    function handleContact(e) {
+      e.preventDefault();
+      alert("Your message is ready to be wired up! Connect this form to your backend or email.");
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
